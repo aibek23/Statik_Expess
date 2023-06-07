@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+}
+.container{
+    width: 400px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    margin-top: 0;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+    </style>
+    <div class="container">
+        <h1>Тест</h1>
+        <h2>Вопрос 1</h2>
+        <p>Дастан сдаст экзамены?</p>
+        <div class="form">
+            <input type="radio" name="r1" value="1"> Да<br>
+            <input type="radio" name="r1" value="2"> Нет<br>
+            <br>
+            <input type="submit" id="btnResutl" value="Отправить">
+        </div>
+    </div>
+    
+    <div id="resultFild"></div>
+    <script>var btnResutl = document.getElementById('btnResutl');
+        var resultFild = document.getElementById('resultFild');
+        var inputFild = document.getElementsByTagName('input');
+        btnResutl.addEventListener('click', function(){
+            let resultedInputs = document.querySelectorAll("input[type='radio']:checked");
+            let result = 0;
+            Array.prototype.map.call(resultedInputs, (el)=>{
+              result += parseInt(el.dataset.value);
+
+              if (el.value == 1) {
+                result = "Ура, молодец!"
+              }else if (el.value == 2 ) {
+                result = "Пусть придет на пересдачу! "}
+                else if (el.value == 0){
+                    "вы не выбрали!"
+                }
+            });
+   
+            resultFild.innerHTML = result 
+        });</script>
+</body>
+
+</html>
